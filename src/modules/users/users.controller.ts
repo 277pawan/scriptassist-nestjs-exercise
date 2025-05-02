@@ -14,7 +14,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users') // 📘 Swagger tag for API grouping
 @Controller('users')
@@ -24,6 +24,7 @@ export class UsersController {
 
   @Post()
   // ✅ Public route: Create new user
+  @ApiOperation({ summary: 'Create any user' })
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -32,6 +33,7 @@ export class UsersController {
   @ApiBearerAuth() // 📘 Adds bearer token input in Swagger UI
   @Get()
   // 🔍 Admin or authenticated users can fetch all users
+  @ApiOperation({ summary: 'Get all users list' })
   findAll() {
     return this.usersService.findAll();
   }
@@ -40,6 +42,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Get(':id')
   // 🔍 Get a single user by ID — protected
+  @ApiOperation({ summary: 'Get users based on id' })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
@@ -48,6 +51,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Patch(':id')
   // ✏️ Update user data — password will be hashed if included
+  @ApiOperation({ summary: 'Update users detail based on id' })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
@@ -56,6 +60,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Delete(':id')
   // ❌ Delete a user (will fail if user is referenced elsewhere)
+  @ApiOperation({ summary: 'Delete any user' })
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }
