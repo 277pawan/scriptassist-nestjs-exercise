@@ -165,4 +165,16 @@ export class TasksService {
     task.status = status;
     return await this.tasksRepository.save(task);
   }
+
+  // TOD  to implement real time notification for user
+  async notifyUserAboutOverdueTask(taskId: string): Promise<void> {}
+
+  // tasks.service.ts
+  async getOverdueTasks(): Promise<Task[]> {
+    return this.tasksRepository.find({
+      where: {
+        status: TaskStatus.PENDING,
+      },
+    });
+  }
 }

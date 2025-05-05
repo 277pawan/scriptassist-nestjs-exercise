@@ -16,6 +16,8 @@ A robust backend API built with NestJS featuring JWT authentication, queue proce
   - Pagination & filtering (`/users?name=John&limit=10&page=1`)
   - Role-based access control
   - Secure password hashing (bcrypt)
+  - BullMQ queue processing implementation
+  - Rate limiting for API endpoints
 - **Authentication**
 
   - JWT-based auth system
@@ -33,11 +35,6 @@ A robust backend API built with NestJS featuring JWT authentication, queue proce
   - Unit & integration tests (Jest)
   - Test coverage for edge cases
   - Supertest for HTTP assertions
-
-### ⚠️ Pending (Roadmap)
-
-- Rate limiting for API endpoints
-- BullMQ queue processing implementation
 
 ## 📚 API Documentation
 
@@ -57,5 +54,5 @@ Interactive Swagger documentation available at `/api` when running the server.
 | Code Comments          | ✅ Completed | Included in all logic            |
 | Serialization          | ✅ Completed | Passwords hidden                 |
 | Testing                | ✅ Completed | With edge cases                  |
-| Rate Limiting          | ⚠️ Pending   | Mentioned as future improvement  |
-| Queue Processing       | ⚠️ Pending   | Will be tested with BullMQ setup |
+| Rate Limiting          | ✅ Pending   | Mentioned as future improvement  |
+| Queue Processing       | ✅ Pending   | Will be tested with BullMQ setup |
